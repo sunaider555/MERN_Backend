@@ -35,9 +35,7 @@ exports.getPageNum = (req, res) => {
         res.send(data);
     })
     .catch(err => {
-        // res.send({
-        //     message: err.message || "Some error occurred while retrieving tutorials."
-        // });
+        res.send("0");
     });
 }
 //Retrieve all companys with type.

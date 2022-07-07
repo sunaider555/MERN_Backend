@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 // app.use(...);
 const db = require("./app/models");
+const config = require("./app/config/config");
+const path = require("path");
 
 db.mongoose
   .connect(db.url, {
@@ -19,13 +21,16 @@ db.mongoose
   });
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  // origin: "http://localhost:3000"
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
 // app.use(bodyParser.urlencoded({extended:false})) 
 // app.use(bodyParser.json()) 
 
